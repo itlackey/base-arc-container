@@ -3,13 +3,7 @@ ARG UBUNTU_VERSION=22.04
 FROM ubuntu:${UBUNTU_VERSION}
 
 # Set versions
-ARG DPCPP_VER=2023.2.1-16
-ARG MKL_VER=2023.2.0-49495
 ARG CMPLR_COMMON_VER=2023.2.1
-ARG ICD_VER=23.17.26241.33-647~22.04
-ARG LEVEL_ZERO_GPU_VER=1.3.26241.33-647~22.04
-ARG LEVEL_ZERO_VER=1.11.0-647~22.04
-ARG LEVEL_ZERO_DEV_VER=1.11.0-647~22.04
 ARG DEVICE=flex
 ARG PYTHON=python3.11
 
@@ -59,17 +53,7 @@ RUN apt-get install -y --no-install-recommends --fix-missing \
     apt-get clean
 
 # intel-basekit
-
-#  intel-oneapi-runtime-dpcpp-cpp=${DPCPP_VER} \
-#     intel-oneapi-runtime-mkl=${MKL_VER} \
-#     intel-oneapi-compiler-shared-common-${CMPLR_COMMON_VER}=${DPCPP_VER} \
-#     intel-opencl-icd=${ICD_VER} \
-#     intel-level-zero-gpu=${LEVEL_ZERO_GPU_VER} \
-#     level-zero=${LEVEL_ZERO_VER} \
-#     level-zero-dev=${LEVEL_ZERO_DEV_VER} \
-
-
-RUN echo "source /opt/intel/oneapi/setvars.sh" >> /root/.bashrc
+# RUN echo "source /opt/intel/oneapi/setvars.sh" >> /root/.bashrc
 
 # Set environment variables
 ENV venv_dir=/deps/venv
